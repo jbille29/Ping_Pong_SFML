@@ -1,0 +1,60 @@
+#include "pch.h"
+#include "Ball.h"
+
+// This the constructor and it is called when we create an object
+//Ball::Ball(float startX, float startY)
+Ball::Ball()
+{
+	//position.x = startX;
+	//position.y = startY;
+
+	position.x = 1920/2;
+	position.y = 1;
+
+	ballShape.setSize(sf::Vector2f(10, 10));
+	ballShape.setPosition(position);
+	ballShape.setFillColor(sf::Color::Red);
+}
+
+FloatRect Ball::getPosition()
+{
+	return ballShape.getGlobalBounds();
+}
+
+RectangleShape Ball::getShape()
+{
+	return ballShape;
+}
+
+float Ball::getXVelocity()
+{
+	return xVelocity;
+}
+
+void Ball::reboundSides()
+{
+	xVelocity = -xVelocity;
+}
+
+void Ball::reboundBatOrTop()
+{
+	position.y -= (yVelocity * 30);
+	yVelocity = -yVelocity;
+
+}
+
+void Ball::hitBottom()
+{
+	position.y = 1;
+	position.x = 500;
+}
+
+void Ball::update(float dtAsSeconds)
+{
+	// Update the ball position variables
+	position.y += yVelocity * dtAsSeconds;
+	position.x += xVelocity * dtAsSeconds;
+
+	// Move the ball and the bat
+	ballShape.setPosition(position);
+}
