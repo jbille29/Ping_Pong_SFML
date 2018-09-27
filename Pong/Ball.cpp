@@ -11,19 +11,19 @@ Ball::Ball()
 	position.x = 1920/2;
 	position.y = 1;
 
-	ballShape.setSize(sf::Vector2f(10, 10));
-	ballShape.setPosition(position);
-	ballShape.setFillColor(sf::Color::Red);
+	body.setSize(sf::Vector2f(10, 10));
+	body.setPosition(position);
+	body.setFillColor(sf::Color::Red);
 }
 
-FloatRect Ball::getPosition()
+sf::FloatRect Ball::getPosition()
 {
-	return ballShape.getGlobalBounds();
+	return body.getGlobalBounds();
 }
 
-RectangleShape Ball::getShape()
+sf::RectangleShape Ball::getShape()
 {
-	return ballShape;
+	return body;
 }
 
 float Ball::getXVelocity()
@@ -56,5 +56,5 @@ void Ball::update(float dtAsSeconds)
 	position.x += xVelocity * dtAsSeconds;
 
 	// Move the ball and the bat
-	ballShape.setPosition(position);
+	body.setPosition(position);
 }

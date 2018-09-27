@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "Bat.h"
 
+
+
 // This the constructor and it is called when we create an object
 //Bat::Bat(float startX, float startY)
 Bat::Bat()
@@ -11,21 +13,21 @@ Bat::Bat()
 	position.x = 1920/2;
 	position.y = 1080 - 20;
 
-	batShape.setSize(sf::Vector2f(50, 5));
-	batShape.setPosition(position);
-	batShape.setFillColor(sf::Color::Red);
+	body.setSize(sf::Vector2f(50, 5));
+	body.setPosition(position);
+	body.setFillColor(sf::Color::Red);
 
 	rightPressed, leftPressed = false;
 }
 
-FloatRect Bat::getPosition()
+sf::FloatRect Bat::getPosition()
 {
-	return batShape.getGlobalBounds();
+	return body.getGlobalBounds();
 }
 
-RectangleShape Bat::getShape()
+sf::RectangleShape Bat::getShape()
 {
-	return batShape;
+	return body;
 }
 
 void Bat::moveLeft()
@@ -57,5 +59,5 @@ void Bat::update(float dtAsSeconds)
 	if(rightPressed)
 		position.x += batSpeed * dtAsSeconds;
 
-	batShape.setPosition(position);
+	body.setPosition(position);
 }

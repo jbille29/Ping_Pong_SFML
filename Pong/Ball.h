@@ -1,25 +1,25 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-
-using namespace sf;
+#include "Collider.h"
 
 class Ball
 {
 private:
-	Vector2f position;
+	sf::Vector2f position;
 
 	// A RectangleShape object called ref
-	RectangleShape ballShape;
+	sf::RectangleShape body;
 
 	float xVelocity = 200.0f;
 	float yVelocity = 200.0f;
+	
 
 public:
 	//Ball(float startX, float startY);
 	Ball();
-	FloatRect getPosition();
+	sf::FloatRect getPosition();
 
-	RectangleShape getShape();
+	sf::RectangleShape getShape();
 
 	float getXVelocity();
 
@@ -30,5 +30,7 @@ public:
 	void hitBottom();
 
 	void update(float dtAsSeconds);
+
+	Collider GetCollider() { return Collider(body); }
 
 };

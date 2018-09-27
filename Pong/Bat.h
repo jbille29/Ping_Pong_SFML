@@ -1,15 +1,14 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-
-using namespace sf;
+#include "Collider.h"
 
 class Bat
 {
 private:
-	Vector2f position;
+	sf::Vector2f position;
 
 	// A RectangleShape object
-	RectangleShape batShape;
+	sf::RectangleShape body;
 
 	float batSpeed = 300.0f;
 
@@ -18,9 +17,9 @@ private:
 public:
 	//Bat(float startX, float startY);
 	Bat();
-	FloatRect getPosition();
+	sf::FloatRect getPosition();
 
-	RectangleShape getShape();
+	sf::RectangleShape getShape();
 
 	void moveLeft();
 
@@ -31,5 +30,7 @@ public:
 	void stopRight();
 
 	void update(float dtAsSeconds);
+
+	Collider GetCollider() { return Collider(body); }
 
 };
